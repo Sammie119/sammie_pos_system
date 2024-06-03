@@ -5,7 +5,7 @@
 @section('content')
     <div class="container px-3 px-lg-5">
         <article class="resume-wrapper mx-auto theme-bg-light p-2 mb-5 my-5 shadow-lg">
-            
+
             <div class="resume-header">
                 <div class="row align-items-center">
                     <div class="resume-title col-12 col-md-6 col-lg-8 col-xl-10">
@@ -15,7 +15,7 @@
                         <a href="{{ route('users_list') }}" class="btn btn-success">Users</a>
                     </div><!--//resume-contact-->
                 </div><!--//row-->
-                
+
             </div><!--//resume-header-->
             <hr>
             <div class="resume-intro py-3" style="padding: 4rem 4rem;">
@@ -59,6 +59,9 @@
                           <option value="" disabled selected>Choose...</option>
                           <option>Manager</option>
                           <option>Sales Person</option>
+                          <option>Receptionist</option>
+                          <option>Production Manager</option>
+                          <option>Designer</option>
                         </select>
                         @if ($errors->has('position'))
                             <span class="error" style="color: red">{{ $errors->first('position') }}</span>
@@ -84,12 +87,12 @@
                   </form>
             </div><!--//resume-intro-->
             <hr>
-            
+
             <div class="resume-footer text-center" style="margin-bottom: 1rem;">
                 @include('layout.footer')
             </div><!--//resume-footer-->
         </article>
-        
+
     </div><!--//container-->
 
 @endsection

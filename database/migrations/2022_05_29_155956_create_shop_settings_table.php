@@ -23,6 +23,10 @@ return new class extends Migration
             $table->string('text_logo')->nullable();
             $table->string('email')->nullable();
             $table->string('facebook')->nullable();
+            $table->decimal('nhil)', 5, 2)->nullable();
+            $table->decimal('gehl)', 5, 2)->nullable();
+            $table->decimal('covid-19)', 5, 2)->nullable();
+            $table->decimal('vat)', 5, 2)->nullable();
             $table->timestamps();
         });
 
@@ -34,6 +38,10 @@ return new class extends Migration
             'text_logo' => 'Sam IT Consult',
             'email' => 'sammav2018@gmail.com',
             'facebook' => 'sammav2018@gmail.com',
+            'nhil' => '2.5',
+            'gehl' => '2.5',
+            'covid19' => '1',
+            'vat' => '15',
             'created_at' =>  now(),
             'updated_at' =>  now(),
         ]);

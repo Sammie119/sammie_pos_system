@@ -86,21 +86,21 @@
             </div>
             <div class="col-6">
                 <div class="row">
-                    <div class="col-12"><h1 style="float: right; font-size: 3rem">Receipt</h1></div>
-                    <div class="col-12"><h5 style="float: right"># {{ $transaction->first()->receipt_no}}</h5></div>
+                    <div class="col-12"><h1 style="float: right; font-size: 3rem">Invoice</h1></div>
+                    <div class="col-12"><h5 style="float: right"># {{ $invoice->first()->invoice_no}}</h5></div>
                 </div>
             </div>
         </div>
         <br>
-        @php
+		<!--<div id = "logo"  class = "mov"><img src = "../js/img/img_logo2.png"/></div>-->
+		<div>
+            @php
                 $shop = getShopSettings();
 
-                $invoiceTrans = \App\Models\Invoice::where('id', $mainTrans->invoice_no)->first();
+                $invoiceTrans = \App\Models\Invoice::where('id', $invoice->first()->invoice_no)->first();
 
                 $customer = getCustomer($invoiceTrans->customer_id);
             @endphp
-		<!--<div id = "logo"  class = "mov"><img src = "../js/img/img_logo2.png"/></div>-->
-		<div>
 			<div><b>{{ $shop->shop_name }}</b><br>
 				{{ $shop->address }} <br>
                 {{ $shop->phone2 }} <br>
@@ -112,6 +112,7 @@
         <div>
             <label>Bill To</label>
             <label style="float: right">Date {{ date('Y-m-d') }}</label>
+
 			<div><b>{{ $customer->name }}</b><br>
 				{{ $customer->address }} <br>
                 {{ $customer->location }} <br>
@@ -125,7 +126,7 @@
 
 		{{-- <div class = "mov">
 			<div><b>Receipt No.:</b>
-				<div style="float: right"><b>Pay Mode:</b> {{ \App\Models\Transaction::select('payment_method')->where('id', $transaction->first()->receipt_no)->first()->payment_method }}</div>
+				<div style="float: right"><b>Pay Mode:</b> {{ \App\Models\Invoice::select('payment_method')->where('id', $invoice->first()->invoice_no)->first()->payment_method }}</div>
 			</div>
 		</div> --}}
 
@@ -143,7 +144,7 @@
                         </tr>
 					</thead>
 					<tbody>
-						@foreach ($transaction as $key => $trans )
+						@foreach ($invoice as $key => $trans )
                             @php
                                 $product = \App\Models\Product::where('id', $trans->product_id)->first();
                             @endphp
@@ -187,22 +188,13 @@
                                 <th class="mov-right" style="padding-right: 10px;">{{ $sub_total + $vat }}</th>
                             </tr>
 
-                            <tr>
-                                <th class="mov-right" colspan = "4" >Amount Paid: GH&cent;</th>
-                                <th class="mov-right" style="padding-right: 10px;">{{ $mainTrans->amount_paid }}</th>
-                            </tr>
-                            <tr>
-                                <th class="mov-right" colspan = "4" >Balance: GH&cent;</th>
-                                <th class="mov-right" style="padding-right: 10px;">{{ $mainTrans->balance }}</th>
-                            </tr>
-
                         </tfoot>
                     </table>
                 @else
                     <tfoot>
                         <tr>
                             <th class="mov-right" colspan = "4">Total: GH&cent;</th>
-                            <th class="mov-right" style="padding-right: 10px;">{{ $amount = $mainTrans->transac_amount }}</th>
+                            <th class="mov-right" style="padding-right: 10px;">{{ $amount = $invoiceTrans->transac_amount }}</th>
                         </tr>
                         <tr>
                             <th class="mov-right" colspan = "4" >Tax: GH&cent;</th>
@@ -224,7 +216,7 @@
             </table>
 
 			</div>
-			{{-- Cashier: {{ get_user(\App\Models\Transaction::select('user_id')->where('id', $transaction->first()->receipt_no)->first()->user_id) }} --}}
+			{{-- Cashier: {{ get_user(\App\Models\Invoice::select('user_id')->where('id', $invoice->first()->invoice_no)->first()->user_id) }} --}}
 		</div>
 		{{-- <div align = "center"><b>Stay Blessed.......</b></div> --}}
 

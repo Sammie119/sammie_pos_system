@@ -35,7 +35,7 @@
             <input type="text" class="form-control form-control-border product" list="datalistOptions" placeholder="Enter Product">
             <datalist id="datalistOptions">
                 @forelse ( \App\Models\Product::select('name', 'code', 'brand')->orderBy('name')->get() as $product)
-                    <option value="{{ $product->code }}">{{ $product->name }} ({{ $product->brand }})</option>
+                    <option value="{{ $product->name }}">
                 @empty
                     <option value="No Data Found">
                 @endforelse
@@ -49,7 +49,7 @@
 </div>
 
 <hr>
-    
+
 <div class="col-md-12">
     <div class="row ">
         <div class="col-md-2">
@@ -73,7 +73,7 @@
 <div class="col-md-12 form_field_outer p-0">
     <div class="col-md-12 getTotalAmount" id="contentProduct">
         <div class="show_data">No Data Found</div>
-    </div>                    
+    </div>
 </div>
 
 <hr>

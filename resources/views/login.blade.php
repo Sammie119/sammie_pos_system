@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="shortcut icon" href="{{ asset('public/assets/images/sammie_icon.ico') }}"> 
+    <link rel="shortcut icon" href="{{ asset('/assets/images/sammie_icon.ico') }}">
     <title>POS | Login</title>
 
-    <!-- Theme CSS -->  
-	<link id="theme-style" rel="stylesheet" href="{{ asset('public/assets/css/devresume.css') }}">
+    <!-- Theme CSS -->
+	<link id="theme-style" rel="stylesheet" href="{{ asset('/assets/css/devresume.css') }}">
 </head>
 <style>
     /* @import url(https://fonts.googleapis.com/css?family=Roboto:300); */
@@ -56,7 +56,7 @@
     .form button:hover,.form button:active,.form button:focus {
         background: #43A047;
     }
-    
+
     body {
         /* font-family: Helvetica; */
         background: #76b852; /* fallback for old browsers */
@@ -64,7 +64,7 @@
         background: linear-gradient(90deg, rgba(141,194,111,1) 0%, rgba(118,184,82,1) 50%);
         /* font-family: "Roboto", sans-serif; */
         -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;      
+        -moz-osx-font-smoothing: grayscale;
     }
 
     h1 {
@@ -86,7 +86,7 @@
 
 </style>
 <body>
-    <div class="login-page">        
+    <div class="login-page">
         <div class="form">
             {{-- <h1 class="mb-4" style="text-align: center"></h1>             --}}
             @if (Session::has('success'))
@@ -100,14 +100,14 @@
                 </div>
             @endif
             <div class="mb-4" style="text-align: center; margin-top: -20px;">
-                <img src="{{ asset('public/assets/images/sammie_icon.ico') }}" height="100px" width="100px" alt="Sammie">
+                <img src="{{ asset('/assets/images/sammie_icon.ico') }}" height="100px" width="100px" alt="Sammie">
             </div>
-            
+
             <form action="login" method="POST" autocomplete="off" class="login-form">
                 @csrf
                 <label for="username" class="form-label">Username</label>
                 <input type="text" name="username" placeholder="Username" required autofocus>
-         
+
                 <label for="password" class="form-label"> Password</label>
                 <input type="password" name="password" placeholder="Password" required>
                 <button type="submit"><strong>login</strong></button>
@@ -116,13 +116,13 @@
             <div class="pt-3">
                 @include('layout.footer')
             </div>
-            
+
         </div>
     </div>
 </body>
 
-<script src="{{ asset('public/assets/js/bootstrap.bundle.min.js') }}"></script>
-<script src="{{ asset('public/assets/js/jquery-3.6.0.min.js') }}"></script>
+<script src="{{ asset('/assets/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('/assets/js/jquery-3.6.0.min.js') }}"></script>
 
 <script>
     $(".alert").fadeTo(2000, 500).slideUp(500, function(){

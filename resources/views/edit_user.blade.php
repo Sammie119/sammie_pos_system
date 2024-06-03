@@ -5,14 +5,14 @@
 @section('content')
     <div class="container px-3 px-lg-5">
         <article class="resume-wrapper mx-auto theme-bg-light p-2 mb-5 my-5 shadow-lg">
-            
+
             <div class="resume-header">
                 <div class="row align-items-center">
                     <div class="resume-title col-12 col-md-6 col-lg-8 col-xl-9">
                         <h2 class="resume-name mb-0 text-uppercase" style="padding-left: 4rem;">Edit User</h2>
                     </div><!--//resume-title-->
                 </div><!--//row-->
-                
+
             </div><!--//resume-header-->
             <hr>
             <div class="resume-intro py-3" style="padding: 4rem 4rem;">
@@ -54,9 +54,12 @@
                     <div class="col-md-6">
                         <label for="inputState" class="form-label">User Position</label>
                         <select id="inputState" name="position" class="form-select">
-                          <option>{{ $user->position }}</option>
-                          <option>Manager</option>
-                          <option>Sales Person</option>
+                          <option>--Select--</option>
+                          <option @if ($user->position == 'Manager') selected @endif>Manager</option>
+                          <option @if ($user->position == 'Sales Person') selected @endif >Sales Person</option>
+                          <option @if ($user->position == 'Receptionist') selected @endif >Receptionist</option>
+                          <option @if ($user->position == 'Production Manager') selected @endif >Production Manager</option>
+                          <option @if ($user->position == 'Designer') selected @endif >Designer</option>
                         </select>
                         @if ($errors->has('position'))
                             <span class="error" style="color: red">{{ $errors->first('position') }}</span>
@@ -82,13 +85,13 @@
                   </form>
             </div><!--//resume-intro-->
             <hr>
-            
+
             <div class="resume-footer text-center" style="margin-bottom: 1rem;">
                 @include('layout.footer')
                 {{-- <small class="copyright text-muted">Designed and created by Sammav IT Consult</small> --}}
             </div><!--//resume-footer-->
         </article>
-        
+
     </div><!--//container-->
 
 @endsection
