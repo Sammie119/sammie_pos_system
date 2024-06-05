@@ -138,7 +138,7 @@
                         <tr style="background: #002E69; color: #fff;">
                             <th width = "3%" style="padding: 10px;">#</th>
                             <th width = "60%">Description</th>
-                            <th width = "7%" STYLE = "text-align: center;">Qty</th>
+                            <th width = "7%" style = "text-align: center;">Qty</th>
                             <th width = "10%" class="mov-right">Rate</th>
                             <th width = "20%" class="mov-right" style="padding: 10px;">Amt</th>
                         </tr>
@@ -148,12 +148,12 @@
                             @php
                                 $product = \App\Models\Product::where('id', $trans->product_id)->first();
                             @endphp
-							<tr>
-								<td style="padding-left: 10px; padding-top: 5px">{{ ++$key }}.</td>
-								<td STYLE = "text-align: left; padding-left: 3px;">{{ $product->brand  }} - {{  $product->name }}</td>
-                                <td STYLE = "text-align: center;">{{ $trans->quantity }}</td>
-                                <td STYLE = "text-align: right;">{{  $product->price }}</td>
-								<td STYLE = "text-align: right; padding-right: 10px; padding-top: 5px">{{ $trans->amount }}</td>
+							<tr style = "padding-top: 5px; padding-bottom: 5px;">
+								<td style = "padding-left: 10px; vertical-align: text-top;">{{ ++$key }}.</td>
+								<td style = "text-align: left; padding-left: 3px;">{{ $product->name }} <br> {{ $product->description  }}</td>
+                                <td style = "text-align: center; vertical-align: text-top;">{{ $trans->quantity }}</td>
+                                <td style = "text-align: right; vertical-align: text-top;">{{  $product->price }}</td>
+								<td style = "text-align: right; padding-right: 10px; vertical-align: text-top;">{{ $trans->amount }}</td>
 							</tr>
 						@endforeach
 					</tbody>
